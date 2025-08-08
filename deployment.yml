@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-python-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-python-app
+  template:
+    metadata:
+      labels:
+        app: my-python-app
+    spec:
+      containers:
+        - name: my-python-container
+          image: your-dockerhub-username/your-image-name:latest
+          env:
+            - name: TOKEN
+              value: "your-token-value"
+            - name: HOST
+              value: "your-host-value"
+          ports:
+            - containerPort: 8000  # veya app.py'de hangi portsa
